@@ -19,8 +19,8 @@ class Hdf5Rados(CMakePackage):
     variant('mobject', default=True, description='Use mobject')
 
     depends_on('cmake@2.8.12.2:', type='build')
-    depends_on('mobject', when='+mobject')
-    depends_on('hdf5@1.13.3:+mpi')
+    depends_on('mobject@develop+bedrock', when='+mobject')
+    depends_on('hdf5@develop+mpi')
 
     def cmake_args(self):
         """Populate cmake arguments for HDF5 RADOS."""

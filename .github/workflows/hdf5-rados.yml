@@ -61,7 +61,5 @@ jobs:
         spack external find zlib
         spack external find xz
         spack repo add ./mochi-spack-packages
-        spack install mobject@develop+bedrock
-        spack load mobject
-        spack spec hdf5-rados+mobject
-        spack install --test root hdf5-rados+mobject
+        spack spec hdf5-rados
+        spack install hdf5-rados
