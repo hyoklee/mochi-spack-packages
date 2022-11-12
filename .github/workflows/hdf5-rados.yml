@@ -35,9 +35,6 @@ jobs:
         path: ./spack
     - name: Checkout mochi-spack-packages
       uses: actions/checkout@v3
-      with:
-        repository: mochi-hpc/mochi-spack-packages
-        path: ./mochi-spack-packages
     - name: Run spack install hdf5-rados+mobject
       run: |
         . ./spack/share/spack/setup-env.sh
