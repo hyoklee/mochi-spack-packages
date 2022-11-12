@@ -10,7 +10,8 @@ class Hdf5Rados(CMakePackage):
 
     homepage = ''
     url = ''
-    git = 'https://github.com/HDFGroup/vol-rados.git'
+    # git = 'https://github.com/HDFGroup/vol-rados.git'
+    git = 'https://github.com/hyoklee/vol-rados.git'
 
     maintainers = ['hyoklee']
 
