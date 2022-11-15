@@ -60,5 +60,5 @@ jobs:
         spack external find zlib
         spack external find xz
         spack repo add ./mochi-spack-packages
-        spack spec ior@develop +mobject @develop
-        spack install ior@develop +mobject @develop
+        spack spec ior@develop+mobject
+        spack install ior@develop+mobject
