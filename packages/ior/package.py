@@ -17,7 +17,7 @@ class Ior(BuiltinIor):
     variant('gpfs', default=False, description='support configurable GPFS in IOR')
 
     # depend on latest mobject to bring in latest bake
-    depends_on('mobject@develop+bedrock:', when='+mobject')
+    depends_on('mobject@develop+bedrock', when='+mobject')
     # depends_on('mobject@develop+bedrock', when='+mobject @develop')
     # rados and mobject are incompatible
     conflicts('+mobject', when='+rados')
