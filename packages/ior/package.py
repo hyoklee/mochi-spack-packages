@@ -18,7 +18,7 @@ class Ior(BuiltinIor):
 
     # depend on latest mobject to bring in latest bake
     depends_on('mobject@0.4.2:', when='+mobject')
-    depends_on('mobject@develop+bedrock', when='+mobject@develop')
+    depends_on('mobject@develop+bedrock', when='+mobject @develop')
     # rados and mobject are incompatible
     conflicts('+mobject', when='+rados')
     conflicts('+rados', when='+mobject')
@@ -35,7 +35,7 @@ class Ior(BuiltinIor):
         if '+mobject' in spec:
             extra_libs = "LIBS="
             pkg_config = which('pkg-config')
-            extra_libs += pkg_config('--libs-only-l', "mobject-bedrock",
+            extra_libs += pkg_config('--libs-only-l', "mobject-client",
                                      output=str)
 
             config_args.append('--with-rados')
