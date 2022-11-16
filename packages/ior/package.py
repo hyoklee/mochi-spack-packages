@@ -35,7 +35,7 @@ class Ior(BuiltinIor):
         if '+mobject' in spec:
             extra_libs = "LIBS="
             pkg_config = which('pkg-config')
-            extra_libs += pkg_config('--libs-only-l', "mobject-client",
+            extra_libs += pkg_config('--libs-only-l', "mobject-store",
                                      output=str)
 
             config_args.append('--with-rados')
