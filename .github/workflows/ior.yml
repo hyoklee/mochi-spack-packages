@@ -60,5 +60,6 @@ jobs:
         spack external find zlib
         spack external find xz
         spack repo add ./mochi-spack-packages
-        spack spec ior@develop+mobject
+        spack install mobject@develop+bedrock
+        spack load mobject
         spack install ior@develop+mobject
