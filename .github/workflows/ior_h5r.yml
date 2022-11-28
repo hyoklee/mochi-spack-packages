@@ -1,4 +1,4 @@
-name: hdf5-rados
+name: ior@hdf5-rados
 
 on:
   push:
@@ -37,7 +37,7 @@ jobs:
       uses: actions/checkout@v3
       with:
         path: ./mochi-spack-packages
-    - name: Run spack install hdf5-rados+mobject
+    - name: Run spack install ior@hdf5-rados
       run: |
         . ./spack/share/spack/setup-env.sh
         spack compiler find
@@ -60,5 +60,4 @@ jobs:
         spack external find zlib
         spack external find xz
         spack repo add ./mochi-spack-packages
-        spack spec hdf5-rados
-        spack install hdf5-rados
+        spack install ior@hdf5-rados

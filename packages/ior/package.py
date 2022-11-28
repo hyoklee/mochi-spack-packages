@@ -10,19 +10,23 @@ class Ior(BuiltinIor):
     git = 'https://github.com/shanedsnyder/ior'
     version('develop', branch='master', submodules=True)
     version('master', branch='master', submodules=True)
-    version('hdf5-rados', branch='hdf5-rados-ior', submodules=True)
+    version('hdf5-rados', git="https://github.com/hpc/ior.git",
+            branch="main", submodules=True)
 
     variant('rados', default=False, description='support IO with RADOS backend')
     variant('mobject', default=False, description='support IO with RADOS-like Mobject backend')
     variant('gpfs', default=False, description='support configurable GPFS in IOR')
 
     # depend on latest mobject to bring in latest bake
-    depends_on('mobject@develop+bedrock', when='+mobject')
-    # depends_on('mobject@develop+bedrock', when='+mobject @develop')
+    depends_on('mobject@0.7rc1:', when='+mobject')
+    depends_on('mobject@develop', when='+mobject @develop')
+    depends_on('hdf5@develop-1.13', when='@hdf5-rados')
+
     # rados and mobject are incompatible
     conflicts('+mobject', when='+rados')
     conflicts('+rados', when='+mobject')
 
+    patch('errno.patch')
     patch('0001-DO-NOT-MERGE-mobject-specific-hackery.patch', when='+mobject')
 
     def configure_args(self):

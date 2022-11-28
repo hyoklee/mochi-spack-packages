@@ -10,18 +10,18 @@ class Hdf5Rados(CMakePackage):
 
     homepage = ''
     url = ''
-    # git = 'https://github.com/HDFGroup/vol-rados.git'
-    git = 'https://github.com/hyoklee/vol-rados.git'
+    git = 'https://github.com/HDFGroup/vol-rados.git'
 
-    maintainers = ['hyoklee']
+    maintainers = ['soumagne', 'jhendersonHDF']
+
 
     version('master', branch='master', submodules=True)
 
     variant('mobject', default=True, description='Use mobject')
 
     depends_on('cmake@2.8.12.2:', type='build')
-    depends_on('mobject@develop+bedrock', when='+mobject')
-    depends_on('hdf5@develop+mpi')
+    depends_on('mobject', when='+mobject')
+    depends_on('hdf5@1.13.3:+mpi')
 
     def cmake_args(self):
         """Populate cmake arguments for HDF5 RADOS."""
