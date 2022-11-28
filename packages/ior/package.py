@@ -20,7 +20,7 @@ class Ior(BuiltinIor):
     # depend on latest mobject to bring in latest bake
     depends_on('mobject@0.7rc1:', when='+mobject')
     depends_on('mobject@develop', when='+mobject @develop')
-    depends_on('hdf5@develop-1.13', when='@hdf5-rados')
+    depends_on('hdf5-rados', when='@hdf5-rados')
 
     # rados and mobject are incompatible
     conflicts('+mobject', when='+rados')
