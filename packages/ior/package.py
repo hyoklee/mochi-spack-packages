@@ -1,4 +1,4 @@
-# Copyright 2013-2012 Lawrence Livermore National Security, LLC and other
+# Copyright 2013-2019 Lawrence Livermore National Security, LLC and other
 # Spack Project Developers. See the top-level COPYRIGHT file for details.
 #
 # SPDX-License-Identifier: (Apache-2.0 OR MIT)
@@ -10,9 +10,10 @@ class Ior(BuiltinIor):
     git = 'https://github.com/shanedsnyder/ior'
     version('develop', branch='master', submodules=True)
     version('master', branch='master', submodules=True)
-    version('hdf5-rados', git="https://github.com/hpc/ior.git",
-            branch="main", submodules=True)
-
+#    version('hdf5-rados', branch='hdf5-rados-ior', submodules=True)
+    version('hdf5-rados', git="https://github.com/hpc/ior.git", branch="main",
+            submodules=True)
+    variant("hdf5", default=False, description="support IO with HDF5 backend")
     variant('rados', default=False, description='support IO with RADOS backend')
     variant('mobject', default=False, description='support IO with RADOS-like Mobject backend')
     variant('gpfs', default=False, description='support configurable GPFS in IOR')
@@ -20,18 +21,20 @@ class Ior(BuiltinIor):
     # depend on latest mobject to bring in latest bake
     depends_on('mobject@0.7rc1:', when='+mobject')
     depends_on('mobject@develop', when='+mobject @develop')
-    depends_on('hdf5-rados', when='@hdf5-rados')
-
+    depends_on('hdf5-rados', when='@hdf5-rados')    
     # rados and mobject are incompatible
     conflicts('+mobject', when='+rados')
     conflicts('+rados', when='+mobject')
 
+    
     patch('errno.patch')
     patch('0001-DO-NOT-MERGE-mobject-specific-hackery.patch', when='+mobject')
 
     def configure_args(self):
         spec = self.spec
         config_args = super(Ior, self).configure_args()
+        if "+hdf5" in spec:
+            config_args.append("--with-hdf5")
 
         if '+rados' in spec:
             config_args.append('--with-rados')
