@@ -1,4 +1,4 @@
-name: ior pmem_backend
+name: ior file_backend
 
 on:
   push:
@@ -67,4 +67,4 @@ jobs:
         cd ./mochi-spack-packages
         pwd
         ls
-        sudo ./ci_m.sh
+        sudo ./ci_m2.sh
