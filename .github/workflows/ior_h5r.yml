@@ -1,4 +1,4 @@
-name: ior@hdf5-rados
+name: ior@hdf5-rados+hdf5
 
 on:
   push:
@@ -60,4 +60,7 @@ jobs:
         spack external find zlib
         spack external find xz
         spack repo add ./mochi-spack-packages
-        spack install ior@hdf5-rados
+        spack install ior@hdf5-rados+hdf5
+        spack view --verbose symlink $HOME/install ior@hdf5-rados+hdf5 -i
+        sudo ./ci.sh
+        
