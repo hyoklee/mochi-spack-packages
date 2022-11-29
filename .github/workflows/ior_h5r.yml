@@ -62,5 +62,8 @@ jobs:
         spack repo add ./mochi-spack-packages
         spack install ior@hdf5-rados+hdf5
         spack view --verbose symlink $HOME/install ior@hdf5-rados+hdf5 -i
+        cd ./mochi-spack-packages
+        pwd
+        ls
         sudo ./ci.sh
         
