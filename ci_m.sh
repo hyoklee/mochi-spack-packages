@@ -32,7 +32,7 @@ echo "Testing using ior"
 export MOBJECT_CLUSTER_FILE=/home/runner/mobject.ssg
 bake-mkpool -s 50M /dev/shm/mobject.dat
 bedrock na+sm -c $PWD/config.json -v trace &
-ior -g -a RADOS -t 64k -b 128k --rados.user=foo --rados.pool=bar --rados.conf $MOBJECT_CLUSTER_FILE
+ior -a RADOS -t 64k -b 128k --rados.user=foo --rados.pool=bar --rados.conf $MOBJECT_CLUSTER_FILE
 
 
 

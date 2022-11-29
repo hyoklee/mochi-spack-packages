@@ -63,7 +63,7 @@ jobs:
         spack install mobject@develop+bedrock
         spack load mobject
         spack install ior@develop+mobject
-        spack view --verbose symlink $HOME/install ior@hdf5-rados+hdf5 -i
+        spack view --verbose symlink $HOME/install ior@develop+mobject -i
         cd ./mochi-spack-packages
         pwd
         ls
