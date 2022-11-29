@@ -1,6 +1,6 @@
 #!/bin/sh
 #
-# Test HDF5 RADOS VOL using GitHub Action.
+# Test IOR and Mobject using GitHub Action.
 #
 # This script assumes that Action installed all dependencies under
 # /home/runner/install.
@@ -32,6 +32,7 @@ echo "Testing using ior"
 export MOBJECT_CLUSTER_FILE=/home/runner/mobject.ssg
 bake-mkpool -s 50M /dev/shm/mobject.dat
 bedrock na+sm -c $PWD/config.json -v trace &
+sleep 5
 ior -a RADOS -t 64k -b 128k --rados.user=foo --rados.pool=bar --rados.conf $MOBJECT_CLUSTER_FILE
 
 
