@@ -60,8 +60,8 @@ jobs:
         spack external find zlib
         spack external find xz
         spack repo add ./mochi-spack-packages
-        spack install ior@hdf5-rados+hdf5
-        spack view --verbose symlink $HOME/install ior@hdf5-rados+hdf5 -i
+        spack install ior@develop+mobject+hdf5 ^mobject@develop ^hdf5@1.13.3
+        spack view --verbose symlink $HOME/install ior@develop+mobject+hdf5 -i
         cd ./mochi-spack-packages
         pwd
         ls
